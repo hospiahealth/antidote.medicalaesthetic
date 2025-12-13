@@ -698,3 +698,13 @@ def create_app():
         logger.warning(f"Sitemap WSGI robots fix not available: {e}")
     
     return app
+
+# -------------------------------------------------
+# Required for Gunicorn / AWS Elastic Beanstalk
+# -------------------------------------------------
+app = create_app()
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
+
+
